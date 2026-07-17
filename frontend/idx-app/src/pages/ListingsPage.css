@@ -1,0 +1,62 @@
+.listings {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.listings__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.listings__header h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.listings__header p {
+    color: #666;
+}
+
+.listings__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.listings__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.listings__pagination button {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.listings__pagination button:hover:not(:disabled) {
+    background: #f0f0f0;
+}
+
+.listings__pagination button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.listings__status {
+    text-align: center;
+    padding: 48px;
+    color: #666;
+}
+
+.listings__status--error {
+    color: red;
+}

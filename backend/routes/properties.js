@@ -92,7 +92,7 @@ router.get('/', async (req, res) => {
         // construct the query
         const whereClause = filters.length > 0 ? `WHERE ${filters.join(' AND ')}` : '';
         const query = `
-            SELECT L_ListingID, L_Address, L_City, L_Zip, L_SystemPrice, L_Keyword2, LM_Dec_3
+            SELECT *
             FROM rets_property ${whereClause} 
             LIMIT ? 
             OFFSET ?
