@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './PropertyCard.css';
 
 const PropertyCard = ({ property }) => {
@@ -12,8 +12,7 @@ const PropertyCard = ({ property }) => {
         L_State,
         L_Keyword2: beds,
         LM_Dec_3: baths,
-        LM_Int2_3: sqft,
-        L_ListingID
+        LM_Int2_3: sqft
     } = property;
 
     // get first photo URL
@@ -37,7 +36,7 @@ const PropertyCard = ({ property }) => {
                 {(firstPhoto && !imgError) ? (
                     <img
                         src={firstPhoto}
-                        alt={'Property at ${L_Address}'}
+                        alt={`Property at ${L_Address}`}
                         className="property-card__image"
                         onError={() => setImgError(true)}
                     />
