@@ -1,0 +1,81 @@
+.filters {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+.filters__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.filters__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 140px;
+    flex: 1;
+}
+
+.filters__field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+}
+
+.filters__field input,
+.filters__field select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #fff;
+}
+
+.filters__field input:focus,
+.filters__field select:focus {
+    outline: none;
+    border-color: #666;
+}
+
+.filters__error {
+    font-size: 12px;
+    color: red;
+}
+
+.filters__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.filters__search {
+    padding: 8px 20px;
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.filters__search:hover {
+    background: #444;
+}
+
+.filters__reset {
+    padding: 8px 20px;
+    background: #fff;
+    color: #222;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.filters__reset:hover {
+    background: #f0f0f0;
+}

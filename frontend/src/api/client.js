@@ -14,7 +14,7 @@ export const fetchProperties = async ({
     const params = new URLSearchParams();
 
     if (city) params.append('city', city);
-    if (zipCode) params.append('zipCode', zipCode);
+    if (zipCode) params.append('zipcode', zipCode);
     if (minPrice) params.append('minPrice', minPrice);
     if (maxPrice) params.append('maxPrice', maxPrice);
     if (beds) params.append('beds', beds);
