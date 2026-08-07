@@ -144,7 +144,7 @@ router.get('/:id/openhouses', async (req, res) => {
         
         // return open house information if found, empty array otherwise
         const [openHouses] = await db.query(
-            'SELECT * FROM rets_openhouse WHERE L_ListingID = ?', 
+            'SELECT * FROM rets_openhouse WHERE L_ListingID = ? ORDER BY OpenHouseDate ASC, OH_StartTime ASC', 
             [id]
         );
         res.json({ results: openHouses });

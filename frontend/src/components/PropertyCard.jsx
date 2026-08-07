@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import PropertyImageCarousel from './PropertyImageCarousel';
+import React from 'react';
 import './PropertyCard.css';
 
 const PropertyCard = ({ property }) => {
-    const [imgError, setImgError] = useState(false);
+    const navigate = useNavigate();
 
     const {
         L_Photos,
@@ -15,35 +17,36 @@ const PropertyCard = ({ property }) => {
         LM_Int2_3: sqft
     } = property;
 
-    // get first photo URL
-    const photo = () => {
+    const getPhotos = () => {
         try {
-            const photoStr = JSON.parse(L_Photos);
-            return (Array.isArray(photoStr) && photoStr.length > 0) ? photoStr[0] : null;
+            const photos = typeof L_Photos === 'string' ? JSON.parse(L_Photos) : L_Photos;
+            if (!Array.isArray(photos)) return [];
+            return photos.filter(url => {
+                try {
+                    new URL(url);
+                    return true;
+                }
+                catch {
+                    return false;
+                }
+            })
         } 
         catch {
-            return null;
+            return [];
         }
     };
-    const firstPhoto = photo();
+    const photos = getPhotos();
 
     // format price
     const price = L_SystemPrice ? `$${parseInt(L_SystemPrice).toLocaleString()}` : 'Price unavailable';
 
     return (
-        <div className="property-card">
-            <div className="property-card__image-container">
-                {(firstPhoto && !imgError) ? (
-                    <img
-                        src={firstPhoto}
-                        alt={`Property at ${L_Address}`}
-                        className="property-card__image"
-                        onError={() => setImgError(true)}
-                    />
-                ) : (
-                    <div className="property-card__no-image">Image unavailable</div>
-                )}
-            </div>
+        <div 
+            className="property-card"
+            onClick={() => navigate(`/property/${property.L_ListingID}`)}
+        >
+            <PropertyImageCarousel photos={photos} address={L_Address} />
+
             <div className="property-card__details">
                 <p className="property-card__price">{price}</p>
                 <p className="property-card__address">{L_Address}</p>

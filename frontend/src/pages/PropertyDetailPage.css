@@ -1,0 +1,81 @@
+.detail {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.detail__back {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #444;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 24px;
+}
+
+.detail__back:hover {
+    color: #000;
+}
+
+.detail__address {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0 0 4px;
+}
+
+.detail__city {
+    font-size: 16px;
+    color: #666;
+    margin: 0 0 12px;
+}
+
+.detail__price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #222;
+    margin: 0 0 12px;
+}
+
+.detail__stats {
+    display: flex;
+    gap: 8px;
+    font-size: 15px;
+    color: #555;
+}
+
+/* Meta row */
+.detail__meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0 24px;
+    font-size: 14px;
+    color: #666;
+}
+
+.detail__badge {
+    background: #222;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Full width detail item */
+.detail__detail-item--full {
+    grid-column: 1 / -1;
+}
+
+/* Agent links */
+.detail__detail-value a {
+    color: #222;
+    text-decoration: underline;
+}
+
+.detail__detail-value a:hover {
+    color: #555;
+}
