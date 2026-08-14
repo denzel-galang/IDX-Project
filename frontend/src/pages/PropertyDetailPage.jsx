@@ -4,6 +4,7 @@ import { fetchID, fetchOH } from '../api/client';
 import './PropertyDetailPage.css';
 import PropertyImageGallery from '../components/PropertyImageGallery';
 import PropertyMap from '../components/PropertyMap';
+import FavoriteButton from '../components/FavoriteButton';
 
 const PropertyDetailPage = () => {
     const { id } = useParams();
@@ -163,9 +164,12 @@ const PropertyDetailPage = () => {
 
             <PropertyImageGallery photos={photos} address={L_Address} />
 
-            <p className="detail__price">
-                ${parseInt(L_SystemPrice).toLocaleString()}
-            </p>
+            <div className="detail__price-row">
+                <p className="detail__price">
+                    ${parseInt(L_SystemPrice).toLocaleString()}
+                </p>
+                <FavoriteButton property={property} size="lg" />                
+            </div>
             <h1 className="detail__address">{L_Address}</h1>
             <p className="detail__city">{L_City}, {L_State} {L_Zip}</p>
             <p className="detail__meta">

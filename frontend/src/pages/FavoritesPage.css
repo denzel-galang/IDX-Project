@@ -1,0 +1,65 @@
+.favorites {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.favorites__header {
+    margin-bottom: 24px;
+}
+
+.favorites__header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 8px 0 4px;
+}
+
+.favorites__header p {
+    color: #666;
+    font-size: 14px;
+}
+
+.favorites__back {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #444;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 8px;
+}
+
+.favorites__back:hover {
+    color: #000;
+}
+
+.favorites__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.favorites__empty {
+    text-align: center;
+    padding: 64px 24px;
+    color: #666;
+}
+
+.favorites__empty p {
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.favorites__empty button {
+    padding: 10px 24px;
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.favorites__empty button:hover {
+    background: #444;
+}

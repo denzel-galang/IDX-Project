@@ -57,3 +57,14 @@
     font-size: 13px;
     color: #555;
 }
+
+.property-card__image-wrapper {
+    position: relative;
+}
+
+.property-card__favorite {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    z-index: 3;
+}

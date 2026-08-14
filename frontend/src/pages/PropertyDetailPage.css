@@ -79,3 +79,10 @@
 .detail__detail-value a:hover {
     color: #555;
 }
+
+.detail__price-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+}

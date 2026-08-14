@@ -2,6 +2,9 @@ import { useNavigate } from 'react-router-dom';
 import PropertyImageCarousel from './PropertyImageCarousel';
 import React from 'react';
 import './PropertyCard.css';
+import FavoriteButton from './FavoriteButton';
+
+//throw new Error('crash test');
 
 const PropertyCard = ({ property }) => {
     const navigate = useNavigate();
@@ -45,7 +48,12 @@ const PropertyCard = ({ property }) => {
             className="property-card"
             onClick={() => navigate(`/property/${property.L_ListingID}`)}
         >
-            <PropertyImageCarousel photos={photos} address={L_Address} />
+            <div className="property-card__image-wrapper">
+                <PropertyImageCarousel photos={photos} address={L_Address} />
+                <div className="property-card__favorite">
+                    <FavoriteButton property={property} size="md" />
+                </div>
+            </div>
 
             <div className="property-card__details">
                 <p className="property-card__price">{price}</p>
