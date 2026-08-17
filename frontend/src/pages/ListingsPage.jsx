@@ -14,8 +14,6 @@ const ListingsPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(20);
 
-    const [crash, setCrash] = useState(false); // TEMPORARY CODE; DELETE LATER
-
     const totalPages = Math.ceil(total / itemsPerPage);
     const offset = (currentPage - 1) * itemsPerPage;
 
@@ -58,20 +56,6 @@ const ListingsPage = () => {
 
     return (
         <div className="listings">
-
-
-{crash && (() => { throw new Error('Manual test crash'); })()}
-<button
-    onClick={() => setCrash(true)}
-    style={{
-        margin: '8px',
-        background: 'red',
-        cursor: 'pointer'
-    }}
->
-    crash button
-</button>
-
             <div className="listings__header">
                 <h1>Properties</h1>
                 <p>{total?.toLocaleString()} results</p>
