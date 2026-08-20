@@ -1,10 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import PropertyImageCarousel from './PropertyImageCarousel';
 import React from 'react';
+import PropTypes from 'prop-types';
 import './PropertyCard.css';
 import FavoriteButton from './FavoriteButton';
-
-//throw new Error('crash test');
 
 const PropertyCard = ({ property }) => {
     const navigate = useNavigate();
@@ -69,6 +68,22 @@ const PropertyCard = ({ property }) => {
             </div>
         </div>
     );
+};
+
+PropertyCard.propTypes = {
+    property: PropTypes.shape({
+        L_ListingID: PropTypes.string.isRequired,
+        L_Address: PropTypes.string,
+        L_City: PropTypes.string,
+        L_State: PropTypes.string,
+        L_Zip: PropTypes.string,
+        L_SystemPrice: PropTypes.number,
+        L_Keyword2: PropTypes.number,
+        LM_Dec_3: PropTypes.number,
+        LM_Int2_3: PropTypes.number,
+        L_Status: PropTypes.string,
+        L_Photos: PropTypes.string,
+    }).isRequired
 };
 
 export default PropertyCard;

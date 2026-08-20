@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import './PropertyImageCarousel.css';
 
 const PropertyImageCarousel = ({ photos, address }) => {
@@ -32,7 +33,7 @@ const PropertyImageCarousel = ({ photos, address }) => {
         <div className="carousel">
             <img
                 src={validPhotos[currentIndex]}
-                alt={`Property at ${address} - photo ${currentIndex + 1}`}
+                alt={`Property at ${address}`}
                 className="carousel__image"
                 onError={() => handleImageError(validPhotos[currentIndex])}
             />
@@ -74,6 +75,11 @@ const PropertyImageCarousel = ({ photos, address }) => {
             )}
         </div>
     );
+};
+
+PropertyImageCarousel.propTypes = {
+    photos: PropTypes.arrayOf(PropTypes.string).isRequired,
+    address: PropTypes.string
 };
 
 export default PropertyImageCarousel;

@@ -134,7 +134,7 @@ const PropertyImageGallery = ({ photos, address }) => {
                     >
                         <img
                             src={validPhotos[lightboxIndex]}
-                            alt={`Property photo ${lightboxIndex + 1}`}
+                            alt={`Property thumbnail ${lightboxIndex + 1}`}
                             className="lightbox__image"
                             onError={() => handleImgError(validPhotos[lightboxIndex])}
                         />

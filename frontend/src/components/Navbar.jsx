@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useFavoritesContext } from '../context/FavoritesContext';
+import { useFavoritesContext } from '../utils/FavoritesContext';
 import './Navbar.css';
 
 const Navbar = () => {

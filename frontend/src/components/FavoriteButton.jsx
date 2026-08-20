@@ -1,5 +1,6 @@
 import React from 'react';
-import { useFavoritesContext } from '../context/FavoritesContext';
+import PropTypes from 'prop-types';
+import { useFavoritesContext } from '../utils/FavoritesContext';
 import './FavoriteButton.css';
 
 const FavoriteButton = ({ property, size = 'md' }) => {
@@ -21,6 +22,17 @@ const FavoriteButton = ({ property, size = 'md' }) => {
             {favorited ? '♥' : '♡'}
         </button>
     );
+};
+
+FavoriteButton.propTypes = {
+    property: PropTypes.shape({
+        L_ListingID: PropTypes.string.isRequired
+    }).isRequired,
+    size: PropTypes.oneOf(['md', 'lg'])
+};
+
+FavoriteButton.defaultProps = {
+    size: 'md'
 };
 
 export default FavoriteButton;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './PropertyFilters.css';
 
 const BED_BATH_OPTIONS = [1, 2, 3, 4, 5];
@@ -133,6 +134,10 @@ const PropertyFilters = ({ onSearch }) => {
             </div>
         </div>
     )
+};
+
+PropertyFilters.propTypes = {
+    onSearch: PropTypes.func.isRequired
 };
 
 export default PropertyFilters;

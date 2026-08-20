@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useFavoritesContext } from '../context/FavoritesContext';
+import { useFavoritesContext } from '../utils/FavoritesContext';
 import PropertyCard from '../components/PropertyCard';
 import './FavoritesPage.css';
 

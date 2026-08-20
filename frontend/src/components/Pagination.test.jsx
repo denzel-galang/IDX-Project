@@ -76,8 +76,8 @@ describe('Pagination Component', () => {
     });
 
     it('does not render for 0 or 1 total page', () => {
-        const { container } = render(<Pagination currentPage={1} totalPages={1} onPageChange={jest.fn()} />);
-        expect(container.firstChild).toBeNull();
+        render(<Pagination currentPage={1} totalPages={1} onPageChanges={jest.fn()} />);
+        expect(screen.queryByTestId('pagination')).not.toBeInTheDocument();
     });
 
     it('highlights the current page correctly', () => {

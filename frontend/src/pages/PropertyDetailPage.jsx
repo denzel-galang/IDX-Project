@@ -154,8 +154,7 @@ const PropertyDetailPage = () => {
         `${L_Address}, ${L_City}, ${L_State}, ${L_Zip}`
     );
     const addressDirectionsUrl = `https:/www.google.com/maps/dir/?api=1&destination=${destination}`;
-    const coordsDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${LMD_MP_Latitude},${LMD_MP_Longitude}`;
-
+    
     return (
         <div className="detail">
             <button className="detail__back" onClick={() => navigate(-1)}>

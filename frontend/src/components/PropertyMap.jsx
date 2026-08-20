@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './PropertyMap.css';
 
 const PropertyMap = ({ latitude, longitude, address }) => {
@@ -45,6 +46,12 @@ const PropertyMap = ({ latitude, longitude, address }) => {
             />
         </div>
     );
+};
+
+PropertyMap.propTypes = {
+    latitude: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    longitude: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    address: PropTypes.string
 };
 
 export default PropertyMap;

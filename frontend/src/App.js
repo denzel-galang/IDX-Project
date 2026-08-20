@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { FavoritesProvider } from './context/FavoritesContext';
+import { FavoritesProvider } from './utils/FavoritesContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import Navbar from './components/Navbar';
 import ListingsPage from './pages/ListingsPage';
@@ -22,16 +22,16 @@ function App() {
                 <ErrorBoundary name="The listings page">
                   <ListingsPage />
                 </ErrorBoundary>
-                } 
-              />
+              } 
+            />
             <Route 
               path="/property/:id" 
               element={
                 <ErrorBoundary name="The property detail page">
                   <PropertyDetailPage />
                 </ErrorBoundary>
-                } 
-              />
+              } 
+            />
             <Route 
               path="/favorites" 
               element={

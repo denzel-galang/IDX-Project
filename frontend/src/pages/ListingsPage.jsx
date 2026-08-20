@@ -39,7 +39,7 @@ const ListingsPage = () => {
         };
         
         loadProperties();
-    }, [currentPage, filters]);
+    }, [currentPage, filters, itemsPerPage, offset]);
 
     const handleSearch = (newFilters) => {
         setFilters(newFilters);
