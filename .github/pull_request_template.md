@@ -15,3 +15,4 @@
 - [ ] Ensure that the code follows the style guidelines
 - [ ] Self-reviewed own code
 - [ ] Ensure that changes result in no warnings
+- [ ] New and existing unit tests pass locally with my changes
