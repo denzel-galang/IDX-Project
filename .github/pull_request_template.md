@@ -6,6 +6,7 @@
 - [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
+- [ ] Formatting update
 
 ## Testing
 - [ ] Unit tests added or updated
