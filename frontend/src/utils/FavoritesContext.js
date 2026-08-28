@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from 'react';
 import useFavorites from '../hooks/useFavorites';
 
-const FavoritesContext = createContext(null);
+export const FavoritesContext = createContext(null);
 
 export const FavoritesProvider = ({ children }) => {
     const favorites = useFavorites();
