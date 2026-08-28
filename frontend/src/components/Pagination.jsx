@@ -6,17 +6,25 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     const getPageNumbers = () => {
         const pages = [];
 
+        // display every page number if fewer than 5 to keep navigation simple
         if (totalPages <= 5) {
             for (let i = 1; i <= totalPages; i++) {
                 pages.push(i);
             }
         }
+        
+        // keep nearby pages available if user isn't too far from the first page
         else if (currentPage <= 3) {
             pages.push(1, 2, 3, 4, '...', totalPages);
         }
+
+        // same behavior for near the end
         else if (currentPage >= totalPages - 2) {
             pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
         }
+
+        // offset both towards and backwards from the user's current page to keep navigation simple
+        // when away from start and end
         else {
             pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
         }
@@ -24,7 +32,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         return pages;
     };
 
-    if (totalPages <= 1) return null;
+    if (totalPages <= 1) return null; // never paginate for a single page
 
     return (
         <div className="pagination" data-testid="pagination">

@@ -19,10 +19,15 @@ const PropertyCard = ({ property }) => {
         LM_Int2_3: sqft
     } = property;
 
+    // convert photo data into array of valid URLs
     const getPhotos = () => {
         try {
             const photos = typeof L_Photos === 'string' ? JSON.parse(L_Photos) : L_Photos;
+            
+            // ensure the parsed value is actually an array before attempting filter; could crash otherwise
             if (!Array.isArray(photos)) return [];
+
+            // remove invalid URLs to avoid loading them
             return photos.filter(url => {
                 try {
                     new URL(url);
@@ -34,7 +39,7 @@ const PropertyCard = ({ property }) => {
             })
         } 
         catch {
-            return [];
+            return []; // return an empty array to allow rendering to continue instead of crashing altogether from one bad URL
         }
     };
     const photos = getPhotos();
