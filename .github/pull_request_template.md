@@ -6,6 +6,7 @@
 - [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
+- [ ] Formatting update
 
 ## Testing
 - [ ] Unit tests added or updated
@@ -15,3 +16,4 @@
 - [ ] Ensure that the code follows the style guidelines
 - [ ] Self-reviewed own code
 - [ ] Ensure that changes result in no warnings
+- [ ] New and existing unit tests pass locally with my changes
