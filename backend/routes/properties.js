@@ -39,6 +39,8 @@ router.get('/', async (req, res) => {
         const filters = [];
         const values = [];
 
+        // use ? for each filter instead of directly incorporating user input to protect against SQL injection
+
         if (city) {
             filters.push('LOWER(TRIM(L_City)) = LOWER(TRIM(?))');
             values.push(city);
@@ -93,7 +95,9 @@ router.get('/', async (req, res) => {
             values.push(parseFloat(baths));
         }
 
-        // construct the query
+        // construct the query from predefined filter conditions.
+        // the filter values are passed separately through parametrized queries,
+        // rather than being directly inserted into the SQL string to prevent injection.
         const whereClause = filters.length > 0 ? `WHERE ${filters.join(' AND ')}` : '';
         const query = `
             SELECT *
@@ -107,7 +111,7 @@ router.get('/', async (req, res) => {
         const [rows] = await db.query(query, values);
         const [[{ total }]] = await db.query(
             `SELECT COUNT(*) as total FROM rets_property ${whereClause}`,
-            values.slice(0, -2)
+            values.slice(0, -2) // removes the LIMIT and OFFSET valeues since they're not needed for COUNT
         );
 
         // return the results
