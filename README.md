@@ -499,6 +499,13 @@ One property can have many open house events. The relationship is maintained thr
 
 ---
 
+### Known Issues
+
+- Running queries directly on SQL is fast, but running them on Postman or the website takes a while
+- A user trying to load the very last page may take a while if very little or no filters were applied
+
+---
+
 ## Future Improvements
 
 - **Authentication** — Add user accounts so favorites persist server-side across devices rather than in localStorage
