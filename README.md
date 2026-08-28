@@ -495,7 +495,7 @@ rets_property (L_ListingID)
 rets_openhouse (L_ListingID)
 ```
 
-One property can have many open house events. The relationship is maintained through `L_ListingID` — there is no enforced foreign key constraint in the schema, so the API checks property existence before querying open houses.
+One property can have many open house events. The relationship is maintained through `L_ListingID`. There is no enforced foreign key constraint in the schema, so the API checks property existence before querying open houses.
 
 ---
 
