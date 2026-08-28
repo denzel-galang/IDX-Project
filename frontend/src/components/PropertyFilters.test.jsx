@@ -3,6 +3,8 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import PropertyFilters from './PropertyFilters';
 
 describe('PropertyFilters', () => {
+    beforeEach(() => jest.resetAllMocks());
+
     it('renders all fields correctly', () => {
         render(<PropertyFilters onSearch={jest.fn()} />);
 
@@ -32,6 +34,25 @@ describe('PropertyFilters', () => {
             city: '29 Palms',
             minPrice: '100000'
         }));
+    });
+
+    it('resets all fields and calls onSearch with empty object when Reset is clicked', () => {
+        const mockOnSearch = jest.fn();
+        render(<PropertyFilters onSearch={mockOnSearch} />);
+
+        fireEvent.change(screen.getByPlaceholderText('e.g. 29 Palms'), {
+            target: { name: 'city', value: '29 Palms' }
+        });
+        fireEvent.change(screen.getByPlaceholderText('e.g. 400000'), {
+            target: { name: 'minPrice', value: '100000' }
+        });
+
+        fireEvent.click(screen.getByRole('button', { name: 'Reset' }));
+
+        expect(screen.getByPlaceholderText('e.g. 29 Palms').value).toBe('');
+        expect(screen.getByPlaceholderText('e.g. 400000').value).toBe('');
+
+        expect(mockOnSearch).toHaveBeenCalledWith(expect.objectContaining({}));
     });
 
     it('shows validation error when minPrice is greater than or equal to maxPrice', () => {

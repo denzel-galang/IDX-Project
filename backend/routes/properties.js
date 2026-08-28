@@ -45,6 +45,10 @@ router.get('/', async (req, res) => {
         }
 
         if (zipcode) {
+            if (!/^\d{5}$/.test(zipcode)) {
+                return res.status(400).json({ error: 'zipcode must be 5 digits.'});
+            }
+
             filters.push('L_Zip = ?');
             values.push(zipcode);
         }
