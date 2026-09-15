@@ -171,12 +171,11 @@ const PropertyDetailPage = () => {
             </div>
             <h1 className="detail__address">{L_Address}</h1>
             <p className="detail__city">{L_City}, {L_State} {L_Zip}</p>
-            <p className="detail__meta">
+            <div className="detail__meta">
                 {L_Status && <span className="detail__badge">{L_Status}</span>}
-                {DaysOnMarket !== null && <span>{DaysOnMarket} days on market</span>}
-                {ListingContractData && <span>Listed {formatDate(ListingContractData)}</span>}
-            </p>
-
+                {DaysOnMarket !== null && <><span className="detail__meta-dot">·</span><span>{DaysOnMarket} days on market</span></>}
+                {ListingContractData && <><span className="detail__meta-dot">·</span><span>Listed {formatDate(ListingContractData)}</span></>}
+            </div>
             <div className="detail__stats">
                 <div className="detail__stat">
                     <span className="detail__stat-value">{beds ?? 'N/A'}</span>
@@ -196,8 +195,8 @@ const PropertyDetailPage = () => {
                 </div>
                 <div className="detail__stat-divider" />
                 <div className="detail__stat">
-                    <span className="detail__stat-label">Built</span>
                     <span className="detail__stat-value"> {YearBuilt ?? 'N/A'}</span>
+                    <span className="detail__stat-label">Year Built</span>
                 </div>
                 {LotSizeAcres && (
                     <>
@@ -222,17 +221,18 @@ const PropertyDetailPage = () => {
                 <p className="detail__map-address">
                     {L_Address}, {L_City}, {L_State} {L_Zip}
                 </p>
-            </div>
 
-            {L_Address && (
-                <a
-                    href={addressDirectionsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Get Directions
-                </a>
-            )}
+                {L_Address && (
+                    <a
+                        href={addressDirectionsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="detail__directions"
+                    >
+                        Get Directions
+                    </a>
+                )}
+            </div>
 
             {L_Remarks && (
                 <div className="detail__section">
@@ -392,30 +392,37 @@ const PropertyDetailPage = () => {
                 </div>
             </div>
             <div className="detail__section">
-                <h2 className="detail__section-title">Open Houses</h2>
-                {openHouses.length === 0 ? (
-                    <p className="detail__no-openhouses">No open houses scheduled.</p>
-                ) : (
-                    <div className="detail__openhouses">
-                        {openHouses.map((oh, index) => (
-                            <div key={index} className="detail__openhouse">
-                                <div className="detail__openhouse-date">
-                                    {formatDate(oh.OpenHouseDate)}
-                                </div>
-                                <div className="detail__openhouse-time">
-                                    {formatTime(oh.OH_StartTime)} - {formatTime(oh.OH_EndTime)}
-                                </div>
-                                <div className="detail__section">
-                                    <h2 className="detail__section-title">Open House Description</h2>
-                                    <p className="detail__description">
-                                        {JSON.parse(oh.all_data).OpenHouseRemarks || "No description available."}
-                                    </p>
-                                </div>
+    <h2 className="detail__section-title">Open Houses</h2>
+    {openHouses.length === 0 ? (
+        <p className="detail__no-openhouses">No open houses scheduled.</p>
+    ) : (
+        <div className="detail__openhouses">
+            {openHouses.map((oh, index) => {
+                let remarks = null;
+                try {
+                    remarks = JSON.parse(oh.all_data)?.OpenHouseRemarks || null;
+                } catch {
+                    remarks = null;
+                }
+                return (
+                    <div key={index} className="detail__openhouse">
+                        <div className="detail__openhouse-header">
+                            <div className="detail__openhouse-date">
+                                {formatDate(oh.OpenHouseDate)}
                             </div>
-                        ))}
+                            <div className="detail__openhouse-time">
+                                {formatTime(oh.OH_StartTime)} – {formatTime(oh.OH_EndTime)}
+                            </div>
+                        </div>
+                        {remarks && (
+                            <p className="detail__openhouse-remarks">{remarks}</p>
+                        )}
                     </div>
-                )}
-            </div>
+                );
+            })}
+        </div>
+    )}
+</div>
         </div>
     );
 };

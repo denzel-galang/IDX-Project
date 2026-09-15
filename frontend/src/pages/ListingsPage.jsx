@@ -57,7 +57,7 @@ const ListingsPage = () => {
     return (
         <div className="listings">
             <div className="listings__header">
-                <h1>Properties</h1>
+                <h1>Properties ({lowerBound}-{upperBound} of {total} results)</h1>
                 <p>{total?.toLocaleString()} results</p>
             </div>
             <PropertyFilters onSearch={handleSearch} />
@@ -67,9 +67,8 @@ const ListingsPage = () => {
                 <div className="listings__status listings__status--error">{error}</div>
             ) : properties.length === 0 ? (
                 <div className="listings__status">No properties found. Adjust your filters.</div>
-            ) : (
-                <>
-                    <span>Showing {lowerBound}-{upperBound} of {total} properties</span>
+            ) : (                
+                <>                    
                     <div className="listings__grid">
                         {properties.map((property) => (
                             <PropertyCard key={property.L_ListingID} property={property} />
